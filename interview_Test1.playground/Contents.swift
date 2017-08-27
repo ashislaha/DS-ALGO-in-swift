@@ -158,9 +158,3 @@ public func solution3(_ S : String) -> Int {
 
 print("Solution3")
 print(solution3("I like swift. I am from Bangalore."))
-
-
-
-
-
-
