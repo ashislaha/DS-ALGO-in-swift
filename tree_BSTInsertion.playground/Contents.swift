@@ -27,7 +27,7 @@ class BST {
                 root.right = insert(rootNode: root.right, data: data)
             }
             
-            return rootNode!
+            return root
             
         } else {
             let node = Node(data: data)
