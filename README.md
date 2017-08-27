@@ -1,0 +1,3 @@
+# DS-ALGO-in-swift
+Solving DS-ALGO problems using swift language in play-ground. Problems regarding on Tree, Graph, Linked-list, Greedy-Algo, 
+Dynamic Programming etc...
