@@ -54,6 +54,7 @@ class BST {
     }
     
     // find min 
+    
     public func findMin(root : Node?) -> Int? {
         guard let root = root else { return nil }
         
@@ -64,8 +65,21 @@ class BST {
         return tempRoot?.data
     }
     
+    // find max 
+    
+    public func findMax(root : Node?)-> Int? {
+        guard let root = root  else { return nil }
+        
+        var tempRoot : Node? = root
+        while tempRoot?.right != nil {
+            tempRoot = tempRoot?.right
+        }
+        return tempRoot?.data
+    }
+    
     // find ancestor so that node is the right child of ancestor
-    public func ancestor(node : Node?) -> Node? {
+    
+    public func successorAncestor(node : Node?) -> Node? {
         guard let node = node else { return nil }
         
         var tempNode : Node? = node
@@ -78,8 +92,26 @@ class BST {
         }
         return tempNode?.parent
     }
+    
+    // find ancestor so that node belongs to left child of the ancestor 
+    
+    public func predecessorAncestor( node : Node?) -> Node? {
+        guard let node = node else { return nil }
+        
+        var tempNode : Node? = node
+        while true {
+            if let parentData = tempNode?.parent?.data, let nodeData = node.data , parentData > nodeData  {
+                tempNode = tempNode?.parent
+            } else {
+                break
+            }
+        }
+        return tempNode?.parent
+    }
+    
 
     // search
+    
     public func search(root : Node? , val : Int) -> Node? {
         if let root = root, let rootval = root.data {
             if val < rootval {
@@ -108,8 +140,29 @@ class BST {
                     return minVal
                 }
             } else { // find out in ancestor
-                if let ancestorNode = ancestor(node: node) {
+                if let ancestorNode = successorAncestor(node: node) {
                     return ancestorNode.data
+                }
+            }
+        }
+        return nil
+    }
+    
+    // do inorder predecessor 
+    
+    public func inorderPredecessor(root: Node? , val : Int) -> Int? {
+        guard let root = root else { return nil }
+        
+        // find node first 
+        if let node = search(root: root, val: val) {
+            // find the left tree 
+            if node.left != nil {
+                if let maxVal = findMax(root: node.left) {
+                    return maxVal
+                }
+            } else { // find the ancestor
+                if let ancestor = predecessorAncestor(node: node) {
+                    return ancestor.data
                 }
             }
         }
@@ -130,28 +183,62 @@ bst.insert(val: 14, root: bst.root)
 
 bst.inorder(root: bst.root)
 
-// testing
-if let successor = bst.inorderSuccessor(root: bst.root, val: 8) {
-    print("\nInorder Successor of 8 = \(successor)")
+// testing Successor
+var testData = 8
+if let successor = bst.inorderSuccessor(root: bst.root, val: testData) {
+    print("\nInorder Successor of \(testData) = \(successor)")
 } else {
-    print("No Successor")
+    print("No Successor of \(testData)")
 }
 
-if let successor = bst.inorderSuccessor(root: bst.root, val: 10) {
-    print("\nInorder Successor of 10 = \(successor)")
+testData = 10
+if let successor = bst.inorderSuccessor(root: bst.root, val: testData) {
+    print("\nInorder Successor of \(testData) = \(successor)")
 } else {
-    print("No Successor")
+    print("No Successor of \(testData)")
 }
 
-if let successor = bst.inorderSuccessor(root: bst.root, val: 22) {
-    print("\nInorder Successor of 14 = \(successor)")
+testData = 22
+if let successor = bst.inorderSuccessor(root: bst.root, val: testData) {
+    print("\nInorder Successor of \(testData) = \(successor)")
 } else {
-    print("No Successor of 22")
+    print("No Successor of \(testData)")
 }
 
-if let successor = bst.inorderSuccessor(root: bst.root, val: 14) {
-    print("\nInorder Successor of 14 = \(successor)")
+testData = 14
+if let successor = bst.inorderSuccessor(root: bst.root, val: testData) {
+    print("\nInorder Successor of \(testData) = \(successor)")
 } else {
-    print("No Successor")
+    print("No Successor of \(testData)")
 }
+
+// testing Predecessor
+testData = 10
+if let predecessor = bst.inorderPredecessor(root: bst.root, val: testData) {
+    print("\nInorder Predecessor of \(testData) = \(predecessor)")
+} else {
+    print("No predessor of \(testData)")
+}
+
+testData = 8
+if let predecessor = bst.inorderPredecessor(root: bst.root, val: testData) {
+    print("\nInorder Predecessor of \(testData) = \(predecessor)")
+} else {
+    print("No predecessor of \(testData)")
+}
+
+testData = 22
+if let predecessor = bst.inorderPredecessor(root: bst.root, val: testData) {
+    print("\nInorder Predecessor of \(testData) = \(predecessor)")
+} else {
+    print("No predecessor of \(testData)")
+}
+
+testData = 4
+if let predecessor = bst.inorderPredecessor(root: bst.root, val: testData) {
+    print("\nInorder Predecessor of \(testData) = \(predecessor)")
+} else {
+    print("No predecessor of \(testData)")
+}
+
 
