@@ -16,8 +16,8 @@ class GoldMine {
     
     public func getMaxGold( gold : [[Int]]) -> Int {
     
-        var rows = gold.count
-        var columns = gold[0].count
+        let rows = gold.count
+        let columns = gold[0].count
         
         // create a look-up matrix 
         var lookUp = gold
