@@ -85,11 +85,12 @@ bst.insert(val: 30, root: bst.root)
 bst.insert(val: 5, root: bst.root)
 bst.insert(val: 7, root: bst.root)
 bst.insert(val: 15, root: bst.root)
+bst.inorder(root: bst.root)
 
 if let small = bst.kthSmallestElement(k: 5, root: bst.root) {
-    print("\(5)th smallest element : \(small)")
+    print("\n\(5)th smallest element : \(small)")
 }
-bst.inorder(root: bst.root)
+
 
 
 
