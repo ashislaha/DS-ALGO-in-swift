@@ -83,12 +83,8 @@ class BST {
         guard let node = node else { return nil }
         
         var tempNode : Node? = node
-        while true {
-            if let parentVal = tempNode?.parent?.data , let nodeVal = node.data , parentVal < nodeVal {
-                 tempNode = tempNode?.parent
-            } else {
-                break
-            }
+        while let parentVal = tempNode?.parent?.data , let nodeVal = node.data , parentVal < nodeVal {
+            tempNode = tempNode?.parent
         }
         return tempNode?.parent
     }
@@ -99,13 +95,10 @@ class BST {
         guard let node = node else { return nil }
         
         var tempNode : Node? = node
-        while true {
-            if let parentData = tempNode?.parent?.data, let nodeData = node.data , parentData > nodeData  {
-                tempNode = tempNode?.parent
-            } else {
-                break
-            }
+        while let parentData = tempNode?.parent?.data, let nodeData = node.data , parentData > nodeData  {
+            tempNode = tempNode?.parent
         }
+        
         return tempNode?.parent
     }
     
