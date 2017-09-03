@@ -26,9 +26,7 @@ class BST {
             } else if data > rootData {
                 root.right = insert(rootNode: root.right, data: data)
             }
-            
             return root
-            
         } else {
             let node = Node(data: data)
             return node
@@ -47,10 +45,16 @@ class BST {
 
 let bst = BST()
 bst.root = nil
-bst.root = bst.insert(rootNode: bst.root, data: 10)
-bst.insert(rootNode: bst.root, data: 20)
-bst.insert(rootNode: bst.root, data: 5)
-bst.insert(rootNode: bst.root, data: 30)
+let arr = [10,20,5,30]
+for item in arr {
+    bst.root = bst.insert(rootNode: bst.root, data: item)
+}
+
+print(bst.root?.data)
+print(bst.root?.left?.data)
+print(bst.root?.right?.data)
+print(bst.root?.right?.right?.data)
+print(bst.root?.right?.left?.data)
 
 bst.inorder(rootNode: bst.root)
 
