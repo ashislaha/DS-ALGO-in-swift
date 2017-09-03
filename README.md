@@ -8,9 +8,10 @@ A. Tree Problems :
 2. BST Deletion 
 3. kth Smallest Element in BST 
 4. Is Binary tree a BST 
-5. Inorder Successor and Inorder Predecessor of a node in BST
-6. Print BST nodes within a specific range 
-7. Convert a sorted array into BST 
+5. Least Common Ancestor(lca) between 2 nodes in a BST. 
+6. Inorder Successor and Inorder Predecessor of a node in BST
+7. Print BST nodes within a specific range 
+8. Convert a sorted array into BST 
 
 
 B. Linked List :
