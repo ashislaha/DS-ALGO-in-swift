@@ -3,21 +3,21 @@
 import UIKit
 import Foundation
 
+class Node {
+    var data : Int?
+    var left : Node?
+    var right : Node?
+    
+    init(data : Int) {
+        self.data = data
+        self.left = nil
+        self.right = nil
+    }
+}
+
 class BST {
     
     var root : Node?
-
-    class Node {
-        var data : Int?
-        var left : Node?
-        var right : Node?
-        
-        init(data : Int) {
-            self.data = data
-            self.left = nil
-            self.right = nil
-        }
-    }
     
     public func insert(rootNode : Node? , data : Int) -> Node {
         if let root = rootNode, let rootData = root.data {
@@ -28,8 +28,7 @@ class BST {
             }
             return root
         } else {
-            let node = Node(data: data)
-            return node
+            return Node(data: data)
         }
     }
     
@@ -50,13 +49,6 @@ for item in arr {
     bst.root = bst.insert(rootNode: bst.root, data: item)
 }
 
-print(bst.root?.data)
-print(bst.root?.left?.data)
-print(bst.root?.right?.data)
-print(bst.root?.right?.right?.data)
-print(bst.root?.right?.left?.data)
-
 bst.inorder(rootNode: bst.root)
-
 
 
