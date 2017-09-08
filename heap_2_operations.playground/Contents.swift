@@ -134,7 +134,6 @@ class Heap {
     
     // delete
     public func delete(key : Int) {
-        print(Int.min)
         decreaseKey(key: key, priority: Int.min)
         extractMin()
     }
