@@ -50,8 +50,6 @@ class Heap {
     public func heapify(index : Int ){
         let left = 2 * index + 1
         let right = 2 * index + 2
-        
-        print("left : \(left) , right : \(right)")
         guard let item = heap_arr[index].data else { return }
         
         var smallest = index
@@ -90,7 +88,6 @@ class Heap {
 
         while let parentData = heap_arr[parent].data, let childData = heap_arr[index].data, childData < parentData, index != 0 {
             swap(&heap_arr[parent], &heap_arr[index])
-            print("swapping at \(heap_arr[parent].data ?? -1) & \(heap_arr[index].data ?? -1)")
             index = parent
             parent = (index - 1) / 2
         }
@@ -98,17 +95,49 @@ class Heap {
     
     // print
     public func printHeap() {
-        print("\n")
+        print("\nPrint Heap :", terminator : " ")
         for item in heap_arr {
             print(item.data ?? -1 , terminator : " ")
         }
     }
     
     // decreaseKey
+    public func decreaseKey(key: Int, priority : Int) {
+        
+        heap_arr[key].data = priority
+        // check with parents to maintain the heap property
+        var index = key
+        var parent = (index-1)/2
+        
+        while index != 0 , let parentData = heap_arr[parent].data , let childData = heap_arr[index].data, childData < parentData {
+            print("\nswap : \(parentData) \(childData) : in Decrease Key Function ")
+            swap(&heap_arr[parent], &heap_arr[index])
+            index = parent
+            parent = (index-1) / 2
+        }
+    }
     
     //extractMin
+    public func extractMin() -> Int {
+        // extract top element from heap
+        // replace it with last element
+        // do heapify
+        let topNode = heap_arr[0]
+        heap_arr[0] = heap_arr[heap_size-1]
+        heap_size -= 1
+        heap_arr.removeLast()
+        
+        heapify(index: 0)
+        return topNode.data ?? -1
+    }
+    
     
     // delete
+    public func delete(key : Int) {
+        print(Int.min)
+        decreaseKey(key: key, priority: Int.min)
+        extractMin()
+    }
     
 }
 
@@ -118,4 +147,10 @@ heap.printHeap()
 
 heap.insert(val: 12)
 heap.printHeap()
+
+print("\nExtract Min : \(heap.extractMin())")
+
+heap.decreaseKey(key: 2, priority: 11)
+heap.printHeap()
+
 
