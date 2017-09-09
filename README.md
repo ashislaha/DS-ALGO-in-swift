@@ -12,18 +12,24 @@ A. Tree Problems :
 6. Inorder Successor and Inorder Predecessor of a node in BST
 7. Print BST nodes within a specific range 
 8. Convert a sorted array into BST 
+9. Vertical Printing of a tree (using the horizontal distance from root concept)
+
+B. Heap :
+
+1. Heap Sort 
+2. Heap operations (insertion , deletion , decreaseKey, ExtractMin, heapify, createHeap)
 
 
-B. Linked List :
+C. Linked List :
 
 1. Reverse a linked list.
 
-C. Dynamic Programing :
+D. Dynamic Programing :
 
 1. Gold-mine problem 
 2. Word Break Problem.
 
-D. Array :
+E. Array :
 1. Left Rotation.
 
 
