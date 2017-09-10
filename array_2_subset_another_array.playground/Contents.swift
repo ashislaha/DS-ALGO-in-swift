@@ -15,10 +15,11 @@ class SubsetArray {
         guard arr2.count > 0  else { return true }
         
         // create a Hash-table based on arr1
-        let hastSet = Set(arr1)
+        let hashSet = Set(arr1)
+        print("Hash-table : \(hashSet)") // create a hash-table of unique elements 
         
         for each in arr2 {
-            if !hastSet.contains(each) {
+            if !hashSet.contains(each) {
                 return false
             }
         }
@@ -27,6 +28,6 @@ class SubsetArray {
 }
 
 let test = SubsetArray()
-let isContain = test.isContain(arr1: [1,2,3,4,5,6], arr2: [6,3])
+let isContain = test.isContain(arr1: [1,2,3,4,5,6,1], arr2: [6,3])
 print("\(isContain)")
 
