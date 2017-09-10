@@ -30,7 +30,10 @@ D. Dynamic Programing :
 2. Word Break Problem.
 
 E. Array :
+
 1. Left Rotation.
+2. An Array (say arr2) is a subset of another array (say arr1) - using hash-table 
+3. Array elements pair is summed to a given number (x) - using hash-table.
 
 
 
