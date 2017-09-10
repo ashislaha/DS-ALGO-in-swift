@@ -35,6 +35,8 @@ E. Array :
 2. An Array (say arr2) is a subset of another array (say arr1) - using hash-table 
 3. Array elements pair is summed to a given number (x) - using hash-table.
 4. Array contains Duplicate elements within k distance - Brute Forece approach & Hash-table approach.
+5. Symmetric pairs present in an array or not - using Hash-table O(arr.size)
+
 
 
 
