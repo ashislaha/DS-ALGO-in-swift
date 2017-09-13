@@ -39,7 +39,8 @@ E. Array :
 
 G. Graph :
 
-1. DFS of connected / disconnected Graph 
+1. DFS (Depth First Search) of connected / disconnected Graph 
+2. BFS (Breadth First Search) of graph 
 
 
 
