@@ -13,6 +13,8 @@ A. Tree Problems :
 7. Print BST nodes within a specific range 
 8. Convert a sorted array into BST 
 9. Vertical Printing of a tree (using the horizontal distance from root concept)
+10. Create BST from preorder traversal
+11. Print Boundary of a binary tree both clockwise & anti-clockwise. ( Leaves, Left view, Right View of BT )
 
 B. Heap :
 
