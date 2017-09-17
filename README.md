@@ -16,6 +16,7 @@ A. Tree Problems :
 10. Create BST from preorder traversal
 11. Print Boundary of a binary tree both clockwise & anti-clockwise. ( Leaves, Left view, Right View of BT )
 12. Create a binary tree from PreOrder and Inorder traversal array
+13. Create a Double Linked List from Binary tree in inorder fashion.
 
 
 B. Heap :
