@@ -129,32 +129,61 @@ class BinaryTree {
             tempNode = temp.right
         }
     }
+    
+    //MARK:- Approach 3 : Fixing left and right at the same time : more easiest approach
+    
+    var previous : TreeNode?
+    var head : TreeNode?
+    
+    public func BTtoDLL(root : TreeNode?) {
+        guard let root = root else { return }
+        BTtoDLL(root: root.left)
+        
+        if previous == nil { // update the head node of DLL
+            head = root
+        } else { // update pointers
+            previous?.right = root
+            root.left = previous
+        }
+        // update the previous pointer
+        previous = root
+        
+        BTtoDLL(root: root.right)
+    }
 }
 
 let bt = BinaryTree()
 bt.root = TreeNode(val: 1)
-
 bt.root?.left = TreeNode(val: 2)
 bt.root?.left?.left = TreeNode(val: 4)
 bt.root?.left?.right =  TreeNode(val: 5)
-
 bt.root?.right = TreeNode(val: 3)
 bt.root?.right?.left = TreeNode(val: 6)
 
+// Approach 1 :
 bt.inorder(root: bt.root)
-print(bt.inorder)
-
 if let linkedRoot = bt.createDoubleLinkedList(arr: bt.inorder.reversed()) {
-    print("\nPrint the Double Linked List :")
+    print("Print the DLL in approach 1 :")
     bt.printList(root: linkedRoot)
 }
 
 // Approach 2
 let rootNode = bt.convertTreeIntoDLL(root: bt.root)
-print("Print the DLL in approach 2 :")
+print("\nPrint the DLL in approach 2 :")
 bt.printDLL(root: rootNode)
 
+// Approach 3 :
+bt.root = nil
+bt.root = TreeNode(val: 10)
+bt.root?.left = TreeNode(val: 20)
+bt.root?.left?.left = TreeNode(val: 40)
+bt.root?.left?.right =  TreeNode(val: 50)
+bt.root?.right = TreeNode(val: 30)
+bt.root?.right?.left = TreeNode(val: 60)
 
+bt.BTtoDLL(root: bt.root)
+print("\nPrint the DLL in Approach 3 :")
+bt.printDLL(root: bt.head)
 
 
 
