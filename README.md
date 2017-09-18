@@ -18,6 +18,7 @@ A. Tree Problems :
 12. Create a binary tree from PreOrder and Inorder traversal array
 13. Create a Double Linked List from Binary tree in inorder fashion.
 14. Mirror of a Binary Tree
+15. Create a Balanced BST from a Normal BST 
 
 
 B. Heap :
