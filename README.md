@@ -20,6 +20,7 @@ A. Tree Problems :
 14. Mirror of a Binary Tree
 15. Create a Balanced BST from a Normal BST 
 16. Delete the elemenent having level value less than k.
+17. Sum of all leaf nodes in a binary tree.
 
 
 B. Heap :
