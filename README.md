@@ -21,6 +21,7 @@ A. Tree Problems :
 15. Create a Balanced BST from a Normal BST 
 16. Delete the elemenent having level value less than k.
 17. Sum of all leaf nodes in a binary tree.
+18. Find Min Height of a binary tree.
 
 
 B. Heap :
