@@ -4,17 +4,18 @@
  
  Top view of a tree :
  
-         1
+         1(hd=0)
         / \
-       2   3
+(hd=-1)2   3(hd=1)
         \
-         4
+         4(hd=0)
           \
-           5
+           5(hd=1)
             \
-             6
+             6(hd=2)
             /
-           7
+           7(hd=1)
+ 
  output : [1,2,3,6]
  Time Complexity = O(tree_size)
  
