@@ -45,7 +45,7 @@ class Graph {
     public func DFSUtil(start : Int) {
         
         // add it in visited list
-        if !visited[start] { print("\(start)" , terminator : " ") }
+        if !visited[start] { print("\(start)") }
         visited[start] = true
         
         // looping through the adjacency list
