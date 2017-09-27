@@ -23,6 +23,7 @@ A. Tree Problems :
 17. Sum of all leaf nodes in a binary tree.
 18. Find Min Height of a binary tree.
 19. Top View of a binary tree
+20. Closest leaf node from a node in a binary tree
 
 
 B. Heap :
