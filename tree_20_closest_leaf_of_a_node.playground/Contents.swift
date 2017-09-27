@@ -46,14 +46,14 @@ class BinaryTree {
     
     // finding into the descendents
     public func closetDown(root : Node?) -> Int {
-        guard let root = root else { return 0 }
+        guard let root = root else { return Int.max-1 } // large number
         if root.left == nil && root.right == nil { return 0 } // leaf node
         return 1 + min(closetDown(root:root.left), closetDown(root: root.right))
     }
     
     // find the closest of a node
     public func closest(root : Node? , key : String, index : Int) -> Int {
-        guard let root = root else { return 0 }
+        guard let root = root else { return Int.max-1 } // large number
         
         // check that the "key" is the root node or not
         if let data = root.data, data == key {
@@ -68,7 +68,7 @@ class BinaryTree {
         } else {
             // key != data
             ancestor.append(root)
-            return 1 + min (closest(root: root.left, key: key, index: index+1), closest(root: root.right, key: key, index: index+1))
+            return min (closest(root: root.left, key: key, index: index+1), closest(root: root.right, key: key, index: index+1))
         }
     }
 }
@@ -96,6 +96,8 @@ bt.inorder(root: bt.root)
 var key = "C"
 print("\nCloset of \(key) : \(bt.closest(root: bt.root, key: key, index: 0))")
 key = "E"
+print("\nCloset of \(key) : \(bt.closest(root: bt.root, key: key, index: 0))")
+key = "I"
 print("\nCloset of \(key) : \(bt.closest(root: bt.root, key: key, index: 0))")
 key = "A"
 print("\nCloset of \(key) : \(bt.closest(root: bt.root, key: key, index: 0))")
