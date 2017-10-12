@@ -22,39 +22,32 @@ class Node {
 class BST {
     var root : Node?
     
-    // insert to BST 
-    
+    // insert to BST
     public func insert(val : Int, root : Node?) -> Node {
     
         if let root = root, let rootVal = root.data {
-            
             if val < rootVal {
                 root.left = insert(val: val, root: root.left)
                 root.left?.parent = root
-            
             } else if val > rootVal {
                 root.right = insert(val: val, root: root.right)
                 root.right?.parent = root
             }
             return root
-            
         } else {
             return Node(val: val)
         }
     }
     
-    // inorder 
-    
+    // inorder
     public func inorder(root : Node?) {
         guard let root = root else { return }
         inorder(root: root.left)
         print(root.data ?? -1 , terminator : " ")
         inorder(root: root.right)
-        
     }
     
-    // find min 
-    
+    // find min
     public func findMin(root : Node?) -> Int? {
         guard let root = root else { return nil }
         
@@ -65,8 +58,7 @@ class BST {
         return tempRoot?.data
     }
     
-    // find max 
-    
+    // find max
     public func findMax(root : Node?)-> Int? {
         guard let root = root  else { return nil }
         
@@ -78,7 +70,6 @@ class BST {
     }
     
     // find ancestor so that node is the right child of ancestor
-    
     public func successorAncestor(node : Node?) -> Node? {
         guard let node = node else { return nil }
         
@@ -89,8 +80,7 @@ class BST {
         return tempNode?.parent
     }
     
-    // find ancestor so that node belongs to left child of the ancestor 
-    
+    // find ancestor so that node belongs to left child of the ancestor
     public func predecessorAncestor( node : Node?) -> Node? {
         guard let node = node else { return nil }
         
@@ -98,13 +88,11 @@ class BST {
         while let parentData = tempNode?.parent?.data, let nodeData = node.data , parentData > nodeData  {
             tempNode = tempNode?.parent
         }
-        
         return tempNode?.parent
     }
     
 
     // search
-    
     public func search(root : Node? , val : Int) -> Node? {
         if let root = root, let rootval = root.data {
             if val < rootval {
@@ -119,7 +107,6 @@ class BST {
     }
     
     // do inorder successor
-    
     public func inorderSuccessor(root : Node?, val : Int) -> Int? {
         guard let root = root else { return nil }
         
@@ -127,7 +114,6 @@ class BST {
         if let node = search(root: root, val: val) {
             
             // check right tree is present or not
-            
             if node.right != nil {
                 if let minVal = findMin(root: node.right) {
                     return minVal
@@ -141,8 +127,7 @@ class BST {
         return nil
     }
     
-    // do inorder predecessor 
-    
+    // do inorder predecessor
     public func inorderPredecessor(root: Node? , val : Int) -> Int? {
         guard let root = root else { return nil }
         

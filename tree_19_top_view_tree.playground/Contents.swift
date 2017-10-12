@@ -70,7 +70,7 @@ class BinaryTree {
     public func topView(root : Node?) {
         guard let root = root else { return } // base condition
         
-        // create a HashSet
+        // create a HashSet, which contains the hd track record
         var hashSet = Set<Int>()
         
         // create a Queue
@@ -113,11 +113,6 @@ bt.root?.left?.right?.right?.right = Node(val: 6)
 bt.root?.left?.right?.right?.right?.left = Node(val: 7)
 print("Top View of tree")
 bt.topView(root: bt.root)
-
-
-
-
-
 
 
 

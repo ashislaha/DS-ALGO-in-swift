@@ -50,8 +50,10 @@ class Graph {
         
         // looping through the adjacency list
         var node = adj[start]
-        while let next = node.next , let data = next.data , !visited[data] {
-            DFSUtil(start: data)
+        while let next = node.next , let data = next.data {
+            if !visited[data] {
+                DFSUtil(start: data)
+            }
             node = next
         }
     }

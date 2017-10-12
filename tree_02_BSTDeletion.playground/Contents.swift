@@ -28,31 +28,24 @@ class BST {
             } else if val > rootValue {
                 root.right = insert(val: val, root: root.right)
             }
-            
             return root
-        
         } else {
             return Node(value: val)
         }
     }
     
     //MARK:- Inorder
-    
     public func inorder(root : Node?) {
-
         if let root = root {
             if root.data != nil {
                 inorder(root: root.left)
-                print(root.data ?? -1, terminator: " ")
+                print(root.data ?? -1)
                 inorder(root: root.right)
             }
         }
     }
     
-    
-    
-    //MARK:- Deletion 
-    
+    //MARK:- Deletion
     public func delete(val : Int, root : Node?) -> Node? {
         
         guard let root = root else { return nil }
@@ -110,9 +103,10 @@ bst.insert(val: 10, root: bst.root)
 bst.insert(val: 40, root: bst.root)
 bst.insert(val: 15, root: bst.root)
 
+print("Before Delete")
 bst.inorder(root: bst.root)
-print("\n")
 bst.root = bst.delete(val: 20, root: bst.root)
+print("\nAfter Delete of 20")
 bst.inorder(root: bst.root)
 
 

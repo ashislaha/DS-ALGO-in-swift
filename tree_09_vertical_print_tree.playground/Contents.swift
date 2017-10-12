@@ -51,7 +51,7 @@ class BinaryTree {
         
         guard let root = root  else { return }
         
-        if vertical_line == hd { print(root.data ?? -1 , terminator : " ") }
+        if vertical_line == hd { print(root.data ?? -1) }
         printVerticalLine(root: root.left, vertical_line: vertical_line, hd: hd-1)
         printVerticalLine(root: root.right, vertical_line: vertical_line, hd: hd+1)
     }

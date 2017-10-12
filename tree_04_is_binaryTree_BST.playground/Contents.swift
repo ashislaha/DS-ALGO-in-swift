@@ -21,16 +21,13 @@ class BinaryTree {
     var root : Node?
     var prev : Node?
     
+    //Method 1 : Do Inoder traversal
     public func isBST(root : Node?) -> Bool {
         guard let root = root else { return true }
-        
-        // Do Inoder traversal
-        
         if isBST(root: root.left) == false { return false }
         if let prev = prev, root.data! < prev.data! { return false } // not in ordered
         prev = root
         return isBST(root: root.right)
-        
     }
     
     public func inorder(root : Node?) {
@@ -41,7 +38,6 @@ class BinaryTree {
     }
     
     // method 2 : using range of min and max
-    
     public func isBSTusingRange(root : Node?, min : Int, max : Int) -> Bool {
         guard let root = root ,let rootData = root.data else { return true }
         

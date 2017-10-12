@@ -131,7 +131,7 @@ public func solution3(_ S : String) -> Int {
                     let word = S[startingWordIndex..<endingWordIndex]
                     
                     if word.characters.count > 0 { // Word validity
-                        words.append(word)
+                        words.append(String(word))
                     }
                     start = spacePositions[i]+1
                 }

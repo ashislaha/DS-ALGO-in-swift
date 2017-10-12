@@ -23,9 +23,7 @@ class BST {
     public func createTreeFromSortedArray(arr : [Int], start : Int, end : Int) -> Node? {
         
         if start > end { return nil }
-        
         let mid = (start + end) / 2
-        print("Start : \(start), end : \(end), mid : \(arr[mid])")
         let node = Node(val: arr[mid])
         node.left = createTreeFromSortedArray(arr: arr, start: start, end: mid-1)
         node.right = createTreeFromSortedArray(arr: arr, start: mid+1, end: end)
@@ -35,7 +33,7 @@ class BST {
     // preorder
     public func preorder(root : Node?) {
         guard let root = root else { return }
-        print(root.data ?? -1 , terminator: " ")
+        print(root.data ?? -1)
         preorder(root: root.left)
         preorder(root: root.right)
     }
@@ -44,7 +42,7 @@ class BST {
     public func inorder(root : Node?) {
         guard let root = root else { return }
         inorder(root: root.left)
-        print(root.data ?? -1 , terminator: " ")
+        print(root.data ?? -1)
         inorder(root: root.right)
     }
 }
@@ -54,9 +52,9 @@ let bst = BST()
 var arr = [1,2,3,4,5,6,7,8,9]
 bst.root = bst.createTreeFromSortedArray(arr: arr, start: 0, end: arr.count-1)
 
-print("\nPreorder :", terminator : " ")
+print("\nPreorder :")
 bst.preorder(root: bst.root)
-print("\nInorder  :", terminator : " ")
+print("\nInorder  :")
 bst.inorder(root: bst.root)
 
 

@@ -24,25 +24,19 @@ class BST {
     
     // insert 
     public func insert(val : Int, root : Node?) -> Node {
-    
         if let root = root , let rootData = root.data {
-            // compare with root node data 
-            
             if val < rootData {
                 root.left = insert(val: val, root: root.left)
             } else if val > rootData {
                 root.right = insert(val: val, root: root.right)
             }
-            
             return root
-        
         } else {
             return Node(val: val)
         }
     }
     
-    // print inorder 
-    
+    // print inorder
     public func inorder(root : Node?) {
         guard let root = root  else { return }
         inorder(root: root.left)
@@ -50,21 +44,17 @@ class BST {
         inorder(root: root.right)
     }
 
-    // print within range 
-    
+    // print within range
     public func printWithinRange(root : Node? , k1 : Int, k2 : Int) {
     
         if let root = root, let rootData = root.data {
-            
+            if k1 <= rootData && rootData <= k2 {
+                print(rootData)
+            }
             if k1 < rootData {
                 printWithinRange(root: root.left, k1: k1, k2: k2)
             }
-            
-            if k1 <= rootData && rootData <= k2 {
-                print(rootData , terminator : " ")
-            }
-            
-            if rootData < k2 {
+            if k2 > rootData  {
                 printWithinRange(root: root.right, k1: k1, k2: k2)
             }
         }
@@ -81,11 +71,14 @@ bst.insert(val: 12, root: bst.root)
 
 
 // print inorder
+print("Inorder :")
 bst.inorder(root: bst.root)
 
-// print with in range 
-print("\nRange value :", terminator:" ")
-bst.printWithinRange(root: bst.root, k1: 10, k2: 21)
+// print with in range
+let k1 = 10
+let k2 = 21
+print("\n\nRange value of \(k1) and \(k2):")
+bst.printWithinRange(root: bst.root, k1: k1, k2: k2)
 
 
 

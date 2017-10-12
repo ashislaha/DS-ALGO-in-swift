@@ -33,12 +33,10 @@ class BST {
     }
     
     public func inorder(rootNode : Node?) {
-        
         guard let rootNode = rootNode else { return }
         inorder(rootNode: rootNode.left)
-        print(rootNode.data ?? -1 , terminator : " ")
+        print(rootNode.data ?? -1)
         inorder(rootNode: rootNode.right)
-        
     }
 }
 
@@ -48,7 +46,5 @@ let arr = [10,20,5,30]
 for item in arr {
     bst.root = bst.insert(rootNode: bst.root, data: item)
 }
-
 bst.inorder(rootNode: bst.root)
-
 

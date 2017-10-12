@@ -38,10 +38,9 @@ class LinkedList {
     }
 
     public func printList(root : Node?) {
-        print("\n")
         var traverseNode : Node? = root
         while(traverseNode != nil ) {
-            print(traverseNode?.value ?? -1 , terminator : " ")
+            print(traverseNode?.value ?? -1)
             traverseNode = traverseNode?.next
         }
     }
@@ -72,10 +71,11 @@ linkedList.root = linkedList.addToList(val: 1, root: linkedList.root)
 linkedList.addToList(val: 2, root: linkedList.root)
 linkedList.addToList(val: 3, root: linkedList.root)
 linkedList.addToList(val: 4, root: linkedList.root)
-
+print("Initial List :")
 linkedList.printList(root: linkedList.root)
 
 linkedList.root = linkedList.reverse(root: linkedList.root)
+print("After Reverse List :")
 linkedList.printList(root: linkedList.root)
 
 

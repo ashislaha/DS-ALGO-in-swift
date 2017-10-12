@@ -28,7 +28,7 @@ class BST {
         
         if val1 < rootVal && val2 < rootVal { // search on left tree
             return lca(root: root.left, val1: val1, val2: val2)
-        } else if val1 > rootVal && val2 > rootVal {
+        } else if val1 > rootVal && val2 > rootVal { // search on right tree
             return lca(root:root.right, val1:val1 , val2:val2)
         }
         return root
@@ -50,7 +50,6 @@ class BST {
     }
     
     // inoder of BST
-    
     public func inorder(root : Node?) {
         guard let root = root  else { return }
         inorder(root: root.left)

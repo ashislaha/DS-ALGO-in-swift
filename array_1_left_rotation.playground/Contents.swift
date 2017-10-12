@@ -51,12 +51,12 @@ public func rotateLeftCommandLine() {
                 
                 for i in rotation..<size {
                     let index = arr.index(arr.startIndex, offsetBy: i)
-                    print(String(arr[index]) , terminator : " ")
+                    print(String(arr[index]))
                 }
                 
                 for i in 0..<rotation {
                     let index = arr.index(arr.startIndex, offsetBy: i)
-                    print(String(arr[index]) , terminator : " ")
+                    print(String(arr[index]))
                 }
             }
         }
