@@ -40,6 +40,7 @@ D. Dynamic Programing :
 
 1. Gold-mine problem 
 2. Word Break Problem.
+3. Maximum priting of A using 4 keys ( A, Select_all, Copy, Paste )
 
 E. Array :
 
