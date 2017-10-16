@@ -42,10 +42,8 @@ public func getMaxPrintDP(n : Int) -> Int {
     
     // fill first 6 elements, ignore 0th element
     for i in 1...6 { lookup[i] = i }
-    
-    var max = 0
     for i in 7...n { // traverse all key stokes
-        for m in 1...n-3 { // paste frequency
+        for m in 1...i-3 { // paste frequency
         
             let val = (i-1-m) * lookup[m]
             if val > lookup[i] { lookup[i] = val }
