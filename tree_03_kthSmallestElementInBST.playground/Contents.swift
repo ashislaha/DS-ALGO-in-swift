@@ -52,7 +52,6 @@ class BST {
     }
     
     // Inorder of BST
-    
     public func inorder(root : Node?) {
         guard let root = root else { return }
         inorder(root: root.left)

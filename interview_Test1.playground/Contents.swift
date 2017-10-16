@@ -158,3 +158,7 @@ public func solution3(_ S : String) -> Int {
 
 print("Solution3")
 print(solution3("I like swift. I am from Bangalore."))
+
+var a : String  = "ABC"
+let char = a[a.index(a.startIndex, offsetBy: 1)]
+print(char.unicodeScalars[char.unicodeScalars.startIndex].value)
