@@ -58,6 +58,8 @@ G. Graph :
 
 H. Ladder and Snake Game.
 
+I. Trie - JSON Creation from array of string input.
+
 
 
 
