@@ -53,9 +53,7 @@ class Queue {
     // remove from Queue
     public func remove() -> QItem? {
         guard !arr.isEmpty else { return nil }
-        let firstItem = arr.first
-        arr.removeFirst()
-        return firstItem
+        return arr.removeFirst()
     }
     
     // isEmpty

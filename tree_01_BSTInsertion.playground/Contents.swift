@@ -20,16 +20,14 @@ class BST {
     var root : Node?
     
     public func insert(rootNode : Node? , data : Int) -> Node {
-        if let root = rootNode, let rootData = root.data {
-            if data <= rootData {
-                root.left = insert(rootNode: root.left, data: data)
-            } else if data > rootData {
-                root.right = insert(rootNode: root.right, data: data)
-            }
-            return root
-        } else {
-            return Node(data: data)
+        
+        guard let root = rootNode, let rootData = root.data else {  return Node(data: data) }
+        if data <= rootData {
+            root.left = insert(rootNode: root.left, data: data)
+        } else if data > rootData {
+            root.right = insert(rootNode: root.right, data: data)
         }
+        return root
     }
     
     public func inorder(rootNode : Node?) {
