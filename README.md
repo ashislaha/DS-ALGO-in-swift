@@ -56,9 +56,12 @@ G. Graph :
 1. DFS (Depth First Search) of connected / disconnected Graph 
 2. BFS (Breadth First Search) of graph 
 
-H. Ladder and Snake Game.
+H. Ladder and Snake Game using Graph traversal (BFS)
 
-I. Trie - JSON Creation from array of string input.
+I. Trie 
+
+1. JSON Creation from array of string input.
+2. Trie Insertion, Search, Delete
 
 
 
