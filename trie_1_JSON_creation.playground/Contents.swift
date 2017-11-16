@@ -131,13 +131,14 @@ class JsonCreator {
     private func printJson(root : Element?) {
         if let childDictionary = root?.childDictionary {
             for each in childDictionary {
-                print("Key : \(each.key)")
+                print("{ \(each.key) : ", terminator : "")
                 printJson(root: each.value)
+                print("}")
             }
         }
         
         if let values = root?.value {
-            print("values : \(values)")
+            print("\(values)")
         }
     }
 }
