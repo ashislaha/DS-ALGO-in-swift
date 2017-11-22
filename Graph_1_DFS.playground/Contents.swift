@@ -14,9 +14,9 @@ class Node {
 
 class Graph {
     
-    var totalVertex : Int = 0
-    var adj : [Node] = []
-    var visited : [Bool] = []
+    private var totalVertex : Int = 0
+    private var adj : [Node] = []
+    private var visited : [Bool] = []
     
     init(vertices : [Int]) {
         totalVertex = vertices.count
@@ -27,7 +27,7 @@ class Graph {
     }
     
     // push to the adj list
-    public func pushToList(node : Node?, data : Int) {
+    private func pushToList(node : Node?, data : Int) {
         guard let node = node else { return }
         let newNode = Node(val: data)
         newNode.next = node.next
@@ -42,7 +42,7 @@ class Graph {
     }
     
     // DFS
-    public func DFSUtil(start : Int) {
+    private func DFSUtil(start : Int) {
         
         // add it in visited list
         if !visited[start] { print("\(start)") }
