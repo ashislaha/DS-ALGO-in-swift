@@ -64,7 +64,8 @@ I. Trie
 1. JSON Creation from array of string input.
 2. Trie Insertion, Search, Delete
 
+J. Recursion :
 
-
+1. Minimum steps to reach a number from 0. (can move ith step at ith iteration)
 
 
