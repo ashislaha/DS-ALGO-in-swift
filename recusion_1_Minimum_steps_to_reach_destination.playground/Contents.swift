@@ -21,14 +21,15 @@ public func reachDestination(source : Int, destination : Int , steps : Int) -> I
     if abs(source) > destination { // there is no solution
         return Int.max
     } else if source == destination {
+        print("get steps here : \(steps)")
         return steps
     } else {
-        // print(steps)
+        print(source)
         let positive = reachDestination(source: source+steps+1, destination: destination, steps: steps+1) // +ve direction
         let negative = reachDestination(source: source-steps-1, destination: destination, steps: steps+1) // -ve direction
         return min( positive, negative)
     }
 }
 
-let d = reachDestination(source: 0, destination: abs(2), steps: 0)
-print(d)
+let moves = reachDestination(source: 0, destination: abs(2), steps: 0)
+print("\nmoves : \(moves)")
