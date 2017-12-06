@@ -43,6 +43,7 @@ D. Dynamic Programing :
 3. Maximum priting of A using 4 keys ( A, Select_all, Copy, Paste )
 4. Min Cost Path in a given cost matrix. (allowed direction right, corner, down)
 5. Longest increasing subsequence.
+6. Gas station Problem.
 
 E. Array :
 
