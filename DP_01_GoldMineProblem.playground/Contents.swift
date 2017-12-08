@@ -31,7 +31,7 @@ class GoldMine {
                 let rigth_up = (col == columns-1 || row == 0) ? 0 : lookUp[row-1][col+1]
                 let right_down = (col == columns-1 || row == rows-1) ? 0 : lookUp[row+1][col+1]
                 let maxVal = max(right, max(rigth_up, right_down))
-                lookUp[row][col] = gold[row][col] + maxVal
+                lookUp[row][col] += maxVal  // gold[row][col] is same as lookup[row][col]
             }
         }
         print("lookup : \(lookUp)")

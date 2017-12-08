@@ -12,10 +12,12 @@ class WordBreak {
         if str.isEmpty { return true }
         else if dictioanry.contains(str) { return true }
         else {
-            for i in 0..<str.characters.count {
-                let prefix = str[str.index(str.startIndex, offsetBy: i)]
-                let suffix = str.substring(from: str.index(str.startIndex, offsetBy: i+1))
-                return dictioanry.contains(String(prefix)) && isWordsPresentRecursion(str:suffix)
+            for i in 1...str.count {
+                let index = str.index(str.startIndex, offsetBy: i)
+                let prefix = str[..<index]
+                let suffix = str[index...]
+                print("prefix \(prefix), suffix : \(suffix)")
+                return dictioanry.contains(String(prefix)) && isWordsPresentRecursion(str:String(suffix))
             }
         }
         return false

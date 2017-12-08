@@ -47,8 +47,8 @@ class JsonCreator {
         "a>b>c=2",
         "a>d>c=3",
         "f>e=10",
-        "a>b=20",  // Invalid
-        "a>b>c>d=11" // Invalid
+        "a>b=20",  // Invalid, Node(b) has Child, cannot insert the value
+        "a>b>c>d=11" // Invalid , Node(c) has value, but trying to insert child, invalid case
     ]
     
     public func create() {
@@ -123,7 +123,7 @@ class JsonCreator {
                         }
                     }
                 }
-                root = rootJson
+                root = rootJson // update root for every input
             }
         }
     }

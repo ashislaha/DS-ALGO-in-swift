@@ -51,10 +51,7 @@ class Queue {
     public func add(item : QItem) { arr.append(item) }
     
     // remove from Queue
-    public func remove() -> QItem? {
-        guard !arr.isEmpty else { return nil }
-        return arr.removeFirst()
-    }
+    public func remove() -> QItem? { return arr.removeFirst() }
     
     // isEmpty
     public func isEmpty() -> Bool { return arr.isEmpty }
