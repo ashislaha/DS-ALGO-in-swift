@@ -63,3 +63,10 @@ func consecutive(num: Int) -> Int {
 }
 
 print("consecutive sum :",consecutive(num: 15))
+
+
+
+
+
+
+

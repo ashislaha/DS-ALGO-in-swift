@@ -29,10 +29,7 @@ class WordBreak {
         else {
             
             // create a look up table of string size, initially all are false
-            var lookup : [Bool] = []
-            for _ in 0..<str.characters.count {
-                lookup.append(false)
-            }
+            var lookup : [Bool] = Array<Bool>(repeating: false, count: str.count)
             
             // traverse
             for i in 0..<str.characters.count {

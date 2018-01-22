@@ -45,7 +45,7 @@ class JsonCreator {
     private let jsonInput = [
         "a>b>c=1",
         "a>b>c=2",
-        "a>d>c=3",
+        "d>c=3",
         "f>e=10",
         "a>b=20",  // Invalid, Node(b) has Child, cannot insert the value
         "a>b>c>d=11" // Invalid , Node(c) has value, but trying to insert child, invalid case

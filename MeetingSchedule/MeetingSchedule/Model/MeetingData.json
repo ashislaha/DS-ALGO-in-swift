@@ -1,0 +1,130 @@
+{
+    "myself": "Dinesh",
+    "meetings": [{
+                 "meetingName": "Test Meeting",
+                 "startTime": "1",
+                 "endTime": "2",
+                 "organiser": "Kumar",
+                 "attendees": [{
+                               "name": "Kumar",
+                               "rank": 0
+                               },
+                               {
+                               "name": "Dinesh",
+                               "rank": 6
+                               },
+                               {
+                               "name": "John",
+                               "rank": 4
+                               },
+                               {
+                               "name": "Jack",
+                               "rank": 2
+                               }
+                               ]
+                 },
+                 {
+                 "meetingName": "Test Meeting 2",
+                 "startTime": "1",
+                 "endTime": "2",
+                 "organiser": "Dinesh",
+                 "attendees": [{
+                               "name": "Kumar",
+                               "rank": 0
+                               },
+                               {
+                               "name": "Dinesh",
+                               "rank": 6
+                               },
+                               {
+                               "name": "Jack",
+                               "rank": 2
+                               }
+                               ]
+                 },
+                 {
+                 "meetingName": "Test Meeting 3",
+                 "startTime": "2",
+                 "endTime": "3",
+                 "organiser": "Kumar",
+                 "attendees": [{
+                               "name": "Kumar",
+                               "rank": 0
+                               },
+                               {
+                               "name": "Dinesh",
+                               "rank": 6
+                               },
+                               {
+                               "name": "Jack",
+                               "rank": 2
+                               },
+                               {
+                               "name": "John",
+                               "rank": 4
+                               }
+                               ]
+                 },
+                 {
+                 "meetingName": "Test Meeting 4",
+                 "startTime": "3",
+                 "endTime": "5",
+                 "organiser": "Kumar",
+                 "attendees": [{
+                               "name": "Dinesh",
+                               "rank": 6
+                               },
+                               {
+                               "name": "Deepak",
+                               "rank": 4
+                               }
+                               ]
+                 },
+                 {
+                 "meetingName": "Test Meeting 5",
+                 "startTime": "4",
+                 "endTime": "5",
+                 "organiser": "Zara",
+                 "attendees": [{
+                               "name": "Dinesh",
+                               "rank": 6
+                               },
+                               {
+                               "name": "John",
+                               "rank": 4
+                               },
+                               {
+                               "name": "Jack",
+                               "rank": 2
+                               },
+                               {
+                               "name": "Zara",
+                               "rank": 1
+                               }
+                               ]
+                 },
+                 {
+                 "meetingName": "Test Meeting 6",
+                 "startTime": "4",
+                 "endTime": "6",
+                 "organiser": "Zara",
+                 "attendees": [{
+                               "name": "Dinesh",
+                               "rank": 6
+                               },
+                               {
+                               "name": "John",
+                               "rank": 4
+                               },
+                               {
+                               "name": "Jack",
+                               "rank": 2
+                               },
+                               {
+                               "name": "Zara",
+                               "rank": 1
+                               }
+                               ]
+                 }
+                 ]
+}
