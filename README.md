@@ -55,6 +55,8 @@ E. Array :
 5. Symmetric pairs present in an array or not - using Hash-table O(arr.size)
 6. Common elements in 3 sorted array.
 
+Array Test 2 : Consecutive Sum of a number and subarray sum of a given array.
+
 G. Graph :
 
 1. DFS (Depth First Search) of connected / disconnected Graph 
