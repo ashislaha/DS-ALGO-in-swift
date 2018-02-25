@@ -4,7 +4,7 @@ import UIKit
 import Foundation
 
 class Node {
-    var data : Int?
+    let data : Int
     var left : Node?
     var right : Node?
     
@@ -21,10 +21,11 @@ class BST {
     
     public func insert(rootNode : Node? , data : Int) -> Node {
         
-        guard let root = rootNode, let rootData = root.data else {  return Node(data: data) }
-        if data <= rootData {
+        guard let root = rootNode else {  return Node(data: data) }
+        
+        if data <= root.data {
             root.left = insert(rootNode: root.left, data: data)
-        } else if data > rootData {
+        } else if data > root.data {
             root.right = insert(rootNode: root.right, data: data)
         }
         return root
@@ -33,7 +34,7 @@ class BST {
     public func inorder(rootNode : Node?) {
         guard let rootNode = rootNode else { return }
         inorder(rootNode: rootNode.left)
-        print(rootNode.data ?? -1)
+        print(rootNode.data)
         inorder(rootNode: rootNode.right)
     }
 }

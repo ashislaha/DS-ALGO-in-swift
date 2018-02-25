@@ -66,10 +66,8 @@ class Graph {
         
         while !Q.isEmpty {
             
-            if let pop = Q.first , let popData = pop.data {
-               
+            if let popData = Q.removeFirst().data {
                 print("data : \(popData)")
-                Q.removeFirst()
                 
                 // traverse the adj list of pop elements
                 var nextElement = adj[popData].next
@@ -79,7 +77,6 @@ class Graph {
                         visited[nextData] = true
                         Q.append(next)
                     }
-                    
                     nextElement = next.next
                 }
             }

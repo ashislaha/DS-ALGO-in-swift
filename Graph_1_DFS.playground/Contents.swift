@@ -17,6 +17,7 @@ class Graph {
     private var totalVertex : Int = 0
     private var adj : [Node] = []
     private var visited : [Bool] = []
+    private var parentDict: [Int: Int] = [:]
     
     init(vertices : [Int]) {
         totalVertex = vertices.count
@@ -52,6 +53,7 @@ class Graph {
         var node = adj[start]
         while let next = node.next , let data = next.data {
             if !visited[data] {
+                parentDict[data] = start // start is parent of next data
                 DFSUtil(start: data)
             }
             node = next
@@ -62,8 +64,23 @@ class Graph {
         for i in 0..<totalVertex {
             DFSUtil(start: i)
         }
+        print(parentDict)
     }
 }
+
+/*
+ 
+  0
+ / \
+1   2
+ \ /
+  3
+ / \
+4   5
+ 
+ 6 - 7
+ 
+ */
 
 let graph = Graph(vertices: [0,1,2,3,4,5,6,7])
 graph.addEdge(u: 0, v: 1)

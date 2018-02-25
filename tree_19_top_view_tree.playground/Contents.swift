@@ -45,7 +45,7 @@ class QItem {
 // maintain a Queue
 class Queue {
     
-    var arr : [QItem] = []
+    private var arr : [QItem] = []
     
     // add into the Queue
     public func add(item : QItem) { arr.append(item) }

@@ -30,7 +30,7 @@ class BinaryTree {
     
     // maintain a Queue to track the node in level wise, Time Complexity = O(n)
     public func levelOrderTraversal(root : Node?) {
-        guard let root = root , let rootNode = root.data else { return }
+        guard let root = root else { return }
         
         var Q : [Node] = []
         Q.append(root)
