@@ -74,7 +74,11 @@ J. Recursion :
 
 1. Minimum steps to reach a number from 0. (can move ith step at ith iteration)
 
-K. Meeting scheduling problem: This is same kind of Job scheduling problem. Given input json and you have find out the conflicted meetings and then proritize as per rule : (1). Highest priority if you are the organiser of the meeting schedule. (2). No of attendies of each meeting. Give more priority on more attendies meeting.
+K. Meeting scheduling problem: This is same kind of Job scheduling problem. Given input json and you have find out the conflicted meetings and then proritize as per rule : 
+(1). Highest priority if you are the organiser of the meeting schedule. 
+(2). No of attendies of each meeting. Give more priority on more attendies meeting.
+
+L. stack operations based on some pre-defined condition.
 
 
 
