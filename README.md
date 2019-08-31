@@ -25,6 +25,7 @@ A. Tree Problems :
 19. Top View of a binary tree
 20. Closest leaf node from a node in a binary tree
 21. Level wise tree traversal using Queue.
+22. Tree checksum problem
 
 
 B. Heap :
