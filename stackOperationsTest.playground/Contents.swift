@@ -109,6 +109,6 @@ struct Stack {
     }
 }
 
-var input = "3 DUP 5 - -"
+var input = "3 DUP 7 - -"
 let r = solution(&input)
 print(r)

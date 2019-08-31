@@ -65,7 +65,7 @@ class BST {
             } else if root.right == nil {
                 return root.left
             } else {
-                if let minValue = successor(root: root.right) {
+                if let minValue = successor(root: root) {
                     root.data = minValue
                     root.right = delete(val: minValue, root: root.right)
                 }
@@ -78,10 +78,10 @@ class BST {
     
     public func successor(root : Node?) -> Int? {
         
-        guard let root = root else { return nil }
+        guard let right = root?.right else { return nil }
         
-        var minVal : Int? = root.data
-        var tempRoot : Node? = root
+        var minVal : Int? = right.data
+        var tempRoot : Node? = right
         while tempRoot?.left != nil {
             tempRoot = tempRoot?.left
             minVal = tempRoot?.data

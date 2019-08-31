@@ -38,6 +38,37 @@ class BST {
         }
     }
     
+    // insert using interative way
+    public func insertUsingInteration(val: Int, root: Node?) -> Node {
+        guard let root = root else { return Node(data: val) }
+        
+        var child: Node? = root
+        var parent: Node? = root
+        
+        while child != nil {
+            // find out the proper position for the insertion
+            parent = child
+            
+            if let nodeValue = child?.data {
+                if val < nodeValue { // go left
+                    child?.lCount += 1
+                    child = child?.left
+                } else { // go right
+                    child = child?.right
+                }
+            }
+        }
+        // final insertion: child is nil and the new node will be attached to the parent
+        if let parentValue = parent?.data {
+            if val < parentValue {
+                parent?.left = Node(data: val)
+            } else {
+                parent?.right = Node(data: val)
+            }
+        }
+        return root
+    }
+    
     // Find kth Smallest element
     public func kthSmallestElement(k : Int, root : Node?) -> Int? {
         guard let root = root else { return nil }
@@ -63,6 +94,7 @@ class BST {
 let bst = BST()
 let arr = [10,20,30,5,7,15]
 for each in arr { bst.root = bst.insert(val: each, root: bst.root) }
+//for each in arr { bst.root = bst.insertUsingInteration(val: each, root: bst.root) }
 bst.inorder(root: bst.root)
 
 let k = 4
