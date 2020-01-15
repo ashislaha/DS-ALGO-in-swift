@@ -171,4 +171,5 @@ let input: [[Int]] = [
     [0,3,7,8]
 ]
 
-let obj = ClosestSet(input: input)
+let _ = ClosestSet(input: input)
+

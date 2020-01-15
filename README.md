@@ -55,6 +55,7 @@ E. Array :
 4. Array contains Duplicate elements within k distance - Brute Forece approach & Hash-table approach.
 5. Symmetric pairs present in an array or not - using Hash-table O(arr.size)
 6. Common elements in 3 sorted array.
+7. Findout the closest set of pairs between 2 array where a target value has been defined.
 
 Array Test 2 : Consecutive Sum of a number and subarray sum of a given array.
 
