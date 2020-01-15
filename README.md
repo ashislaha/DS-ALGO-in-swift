@@ -32,6 +32,7 @@ B. Heap :
 
 1. Heap Sort 
 2. Heap operations (insertion , deletion , decreaseKey, ExtractMin, heapify, createHeap)
+3. Find out the closest set among k sorted array. See the example in the implementation file to understand it in a better way.
 
 
 C. Linked List :
