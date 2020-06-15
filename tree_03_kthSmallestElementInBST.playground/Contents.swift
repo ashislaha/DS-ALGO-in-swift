@@ -97,7 +97,7 @@ for each in arr { bst.root = bst.insert(val: each, root: bst.root) }
 //for each in arr { bst.root = bst.insertUsingInteration(val: each, root: bst.root) }
 bst.inorder(root: bst.root)
 
-let k = 4
+let k = 3
 if let small = bst.kthSmallestElement(k: k, root: bst.root) {
     print("\n\(k)th smallest element : \(small)")
 }
