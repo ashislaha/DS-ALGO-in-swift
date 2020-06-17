@@ -12,37 +12,37 @@ import UIKit
 
 /// find max gold collection
 class GoldMine {
-    
-
+	
+	
 	// traverse right column to left column
-    public func getMaxGoldRightToLeft( gold : [[Int]]) -> Int {
-    
-        let rows = gold.count
-        let columns = gold[0].count
-        
-        // create a look-up matrix 
-        var lookUp = gold
+	public func getMaxGoldRightToLeft( gold : [[Int]]) -> Int {
 		
-        // traverse from end column to begin 
-        for col in stride(from: columns-1, to: -1, by: -1) {
-            for row in 0..<rows {
-                
-                let right = (col == columns-1) ? 0 : lookUp[row][col+1]
-                let rigth_up = (col == columns-1 || row == 0) ? 0 : lookUp[row-1][col+1]
-                let right_down = (col == columns-1 || row == rows-1) ? 0 : lookUp[row+1][col+1]
-                let maxVal = max(right, max(rigth_up, right_down))
-                lookUp[row][col] += maxVal  // gold[row][col] is same as lookup[row][col]
-            }
-        }
-        print("lookup table (right to left): \(lookUp)")
-        
-        // find out the max value from 1st column 
-        var maxFind = lookUp[0][0]
-        for i in 1..<rows {
-            if maxFind < lookUp[i][0] { maxFind = lookUp[i][0] }
-        }
-        return maxFind
-    }
+		let rows = gold.count
+		let columns = gold[0].count
+		
+		// create a look-up matrix
+		var lookUp = gold
+		
+		// traverse from end column to begin
+		for col in stride(from: columns-1, to: -1, by: -1) {
+			for row in 0..<rows {
+				
+				let right = (col == columns-1) ? 0 : lookUp[row][col+1]
+				let rigth_up = (col == columns-1 || row == 0) ? 0 : lookUp[row-1][col+1]
+				let right_down = (col == columns-1 || row == rows-1) ? 0 : lookUp[row+1][col+1]
+				let maxVal = max(right, max(rigth_up, right_down))
+				lookUp[row][col] += maxVal  // gold[row][col] is same as lookup[row][col]
+			}
+		}
+		print("lookup table (right to left): \(lookUp)")
+		
+		// find out the max value from 1st column
+		var maxFind = lookUp[0][0]
+		for i in 1..<rows {
+			if maxFind < lookUp[i][0] { maxFind = lookUp[i][0] }
+		}
+		return maxFind
+	}
 	
 	// traverse left to right columns
 	public func getMaxGoldLeftToRight(array: [[Int]]) -> Int {
