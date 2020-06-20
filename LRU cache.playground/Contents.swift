@@ -65,30 +65,6 @@ class LRUQueue {
 		}
 	}
 	
-	
-	func remove(item: Int) -> Node? {
-		
-		// find out the item and if present return it else return nil
-		var child = root
-		var parent = root
-		
-		while let value = parent?.value, value != item {
-			child = parent
-			parent = parent?.next
-		}
-		
-		if parent != nil { // item found
-			child?.next = parent?.next
-			parent?.next = nil
-			
-			queueSize -= 1
-			return parent
-		}
-		
-		// item is not present in the list
-		return nil
-	}
-	
 	func deleteLastItem() -> Node? {
 		
 		guard root != nil else {
@@ -138,8 +114,7 @@ class LRU {
 			q.moveFront(nodeValue: item)
 			cacheHit = true
 			
-		} else {
-			// item is not present in the cache // miss
+		} else { // item is not present in the cache // miss
 			
 			// 1. update set
 			set.insert(item)
@@ -187,3 +162,5 @@ print("\n", cacheHitsRecords)
 let hits = cacheHitsRecords.filter { $0 == true }
 let percentage = Double(hits.count) / Double(cacheHitsRecords.count) * 100.0
 print("Hit percentage = \(percentage) %")
+
+
