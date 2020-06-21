@@ -81,7 +81,7 @@ class LRUQueue {
 		}
 		
 		// delete it
-		child?.next = parent?.next // and parent.next is already nil already
+		child?.next = parent?.next // and parent.next is already nil
 		queueSize -= 1
 		return parent
 	}
