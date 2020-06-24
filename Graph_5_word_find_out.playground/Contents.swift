@@ -129,6 +129,6 @@ let obj = WordFind()
 let find = obj.traverse(start: "dog", end: "cat", words: ["dot", "dat", "dop", "cat"])
 print(find)
 
-let find2 = obj.traverse(start: "dog", end: "cat", words: ["dot", "dat", "dop", "ca"])
+let find2 = obj.traverse(start: "dog", end: "cat", words: ["dot", "dat", "dop", "bat"])
 print(find2)
 
