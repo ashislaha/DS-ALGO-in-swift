@@ -27,6 +27,9 @@ class Node {
 
 class WordFind {
 	
+	var parents: [String: String] = [:] // used for backtracking
+	
+	
 	public func isSingleLetterChange(first: String, second: String) -> Bool {
 		
 		guard first.count == second.count else { return false }
@@ -50,6 +53,7 @@ class WordFind {
 				
 			} else { // multiple letter changes
 				isSinglePlaceChange = false
+				break // should not process further
 			}
 		}
 		
@@ -62,11 +66,15 @@ class WordFind {
 		
 		for first in words {
 			
+			print("\n")
+			
 			let currentNode = Node(value: first)
 			for second in words {
 				
-				if isSingleLetterChange(first: first, second: second) {
-					
+				let isSingleCharChange = isSingleLetterChange(first: first, second: second)
+				print(first,second, isSingleCharChange)
+				
+				if isSingleCharChange {
 					let adjNode = Node(value: second)
 					adjNode.next = currentNode.next
 					currentNode.next = adjNode
@@ -83,7 +91,7 @@ class WordFind {
 		guard !words.isEmpty else { return false }
 		
 		var newWords = words
-		newWords.append(start)
+		newWords.insert(start, at: 0)
 		
 		let adjList = createAdjacencyList(words: newWords)
 		
@@ -99,22 +107,24 @@ class WordFind {
 		
 		while !Q.isEmpty {
 			
-			let firstNode = Q.removeFirst()
-			visited[firstNode.value] = true
+			let processingdNode = Q.removeFirst()
+			visited[processingdNode.value] = true
 			
 			// traverse through adjacent list
-			var adjNode = adjList[firstNode.value]
+			var adjNode = adjList[processingdNode.value]
 			
 			// we need adjacent nodes calculation here
 			while let unwrappedAdjNode = adjNode {
 				
 				// check whether the next is the "end" node or not
 				if unwrappedAdjNode.value == end {
+					parents[unwrappedAdjNode.value] = processingdNode.value
 					return true
 				}
 				
 				if let isVisited = visited[unwrappedAdjNode.value], !isVisited {
 					Q.append(unwrappedAdjNode)
+					parents[unwrappedAdjNode.value] = processingdNode.value
 				}
 				adjNode = unwrappedAdjNode.next
 			}
@@ -122,13 +132,31 @@ class WordFind {
 		
 		return false
 	}
+	
+	func showPath(start: String, end: String) {
+		
+		var child = end
+		while let parent = parents[child] {
+			print("\(child) <-- ", terminator: "")
+			child = parent
+		}
+		print("\(start)", terminator: "")
+	}
 }
 
 let obj = WordFind()
-//obj.isSingleLetterChange(first: "dog", second: "dat")
 let find = obj.traverse(start: "dog", end: "cat", words: ["dot", "dat", "dop", "cat"])
-print(find)
+print("path exists --> ", find)
+
+if find {
+	print("show the path")
+	obj.showPath(start: "dog", end: "cat")
+}
 
 let find2 = obj.traverse(start: "dog", end: "cat", words: ["dot", "dat", "dop", "bat"])
-print(find2)
+print("path exists -->", find2)
+if find2 {
+	print("show the path")
+	obj.showPath(start: "dog", end: "cat")
+}
 
