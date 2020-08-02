@@ -44,8 +44,8 @@ class WordFind {
 			let ithIndex = first.index(startIndex, offsetBy: i)
 			let jthIndex = first.index(startIndex, offsetBy: i+1)
 			
-			let charA = first[ithIndex..<jthIndex]
-			let charB = second[ithIndex..<jthIndex]
+			let charA = first[ithIndex..<jthIndex] // Substring - it is more efficient as it used the the same memory and does not allocate new memory.
+			let charB = second[ithIndex..<jthIndex] // Substring
 			
 			if charA == charB { continue }
 			else if !isSinglePlaceChange { // first time there is a mismatch between two letters in first and second string
