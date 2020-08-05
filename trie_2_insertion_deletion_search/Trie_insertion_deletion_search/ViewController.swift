@@ -75,50 +75,47 @@ class Trie {
 		return match
 	}
 	
-	  func searchRecursive(_ word: String, root: TrieNode) -> Bool {
-			
+	func searchRecursive(_ word: String, root: TrieNode) -> Bool {
+		
 		guard !word.isEmpty && !root.dict.isEmpty else { return false }
-			var match = true
-			
-			let index = word.index(word.startIndex, offsetBy: 0)
-			let input = String(word[index])
-			
-			var nextInput = ""
-			if word.count != 1 {
-				let nextIndex = word.index(word.startIndex, offsetBy: 1)
-				let endIndex = word.index(word.startIndex, offsetBy: word.count-1)
-				nextInput = String(word[nextIndex...endIndex])
-			}
-			
-			if !nextInput.isEmpty && root.dict.isEmpty {
-				// we are doing some extra processing - word is not present
-				match = false
-				
-			} else {
-				if let nextNode = root.dict[input] {
-				
-					let result = nextInput.isEmpty ? true: searchRecursive(nextInput, root: nextNode)
-					match = match && result
-				} else {
-					if input == "." {
-						
-						if !nextInput.isEmpty {
-							// go through all the keys
-							var dotResult = false
-							for (_, value) in root.dict {
-								dotResult = dotResult || searchRecursive(nextInput, root: value)
-							}
-							match = dotResult
-						}
-				
-					} else { // different input
-						match = false
-					}
-				}
-			}
-			
-			return match
+		var match = true
+		
+		let index = word.index(word.startIndex, offsetBy: 0)
+		let input = String(word[index])
+		
+		var nextInput = ""
+		if word.count != 1 {
+			let nextIndex = word.index(word.startIndex, offsetBy: 1)
+			let endIndex = word.index(word.startIndex, offsetBy: word.count-1)
+			nextInput = String(word[nextIndex...endIndex])
 		}
+		
+		
+		if let nextNode = root.dict[input] {
+			
+			let result = nextInput.isEmpty ? true: searchRecursive(nextInput, root: nextNode)
+			match = match && result
+			
+		} else {
+			
+			if input == "." {
+				
+				if !nextInput.isEmpty {
+					// go through all the keys
+					var dotResult = false
+					for (_, value) in root.dict {
+						dotResult = dotResult || searchRecursive(nextInput, root: value)
+					}
+					match = dotResult
+				}
+				
+			} else { // different input
+				match = false
+			}
+		}
+		
+		return match
+	}
 
 }
 
