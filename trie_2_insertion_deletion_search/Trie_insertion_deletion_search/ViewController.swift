@@ -165,22 +165,22 @@ class ViewController: UIViewController {
 		*/
 		
 		trie.root = TrieNode()
-		let recursiveInput = ["a"]
+		let recursiveInput = ["at", "and", "an", "add", "bat"]
 		for each in recursiveInput {
 			trie.root = trie.insertion(input: each, root: trie.root)
 		}
 		
 		
-		let a = trie.searchRecursive("a", root: trie.root!)
+		let a = trie.searchRecursive(".at", root: trie.root!)
 		print(a)
-		let b = trie.searchRecursive("aa", root: trie.root!)
-		print(b)
-
-		let b2 = trie.searchRecursive("a.", root: trie.root!)
-		print(b2)
-		
-		let c = trie.searchRecursive(".a", root: trie.root!)
-		print(c)
+//		let b = trie.searchRecursive("aa", root: trie.root!)
+//		print(b)
+//
+//		let b2 = trie.searchRecursive("a.", root: trie.root!)
+//		print(b2)
+//
+//		let c = trie.searchRecursive(".a", root: trie.root!)
+//		print(c)
 		
 	}
 }
