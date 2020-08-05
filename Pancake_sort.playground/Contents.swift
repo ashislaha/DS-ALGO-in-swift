@@ -65,5 +65,18 @@ func pancakeSort(arr: [Int]) -> [Int] {
 	return result
 }
 
-print(pancakeSort(arr: [3,2,4,5,1,6]))
+let array = [3,2,4,5,1,6]
+print(pancakeSort(arr: array))
+
+// basic sorting
+var sorted = array.sorted()
+print(sorted)
+
+let d = log2(256.0)
+print(d)
+let e = d/2
+print(e)
+print( e.truncatingRemainder(dividingBy: 1.0) == 0.0)
+
+
 
