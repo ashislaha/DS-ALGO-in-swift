@@ -72,6 +72,8 @@ print(pancakeSort(arr: array))
 var sorted = array.sorted()
 print(sorted)
 
+
+// power of 4 checking
 let d = log2(256.0)
 print(d)
 let e = d/2
