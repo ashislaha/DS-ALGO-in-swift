@@ -112,3 +112,76 @@ let ret_3: Bool = obj.contains(2)
 obj.printSet()
 
 
+
+
+// checking the flipping functionality
+func flip(arr: inout [Int], i: Int) {
+	
+	// flip the elements from begin to i th position in the array
+	
+	var start = 0
+	var end = i
+	
+	while start < end {
+		// swap between start and end
+		let temp = arr[start]
+		arr[start] = arr[end]
+		arr[end] = temp
+		start += 1
+		end -= 1
+	}
+}
+
+var arr = [1,2,3,4,5,6]
+print(arr)
+flip(arr: &arr, i: 4)
+print(arr)
+
+
+
+
+func isPalindrome(_ s: String) -> Bool {
+	
+	// lets create two variable from end and start
+	// check whether it is same or not
+	// stop when start < end is not valid
+	
+	// consider only alpha-neumeric case
+	var start = 0
+	var end = s.count
+	
+	let alphanumeric = NSCharacterSet.alphanumerics
+	
+	while start < end {
+		
+		let index = s.startIndex
+		
+		let startIndex = s.index(index, offsetBy: start)
+		let startNext = s.index(index, offsetBy: start+1)
+		let endIndex = s.index(index, offsetBy:end)
+		let endPrev = s.index(index, offsetBy: end-1)
+		
+		let startString = s[startIndex..<startNext]
+		let endString = s[endPrev..<endIndex]
+		
+		if (!(startString.rangeOfCharacter(from: alphanumeric) != nil)) {
+			start += 1
+		} else if (!(endString.rangeOfCharacter(from: alphanumeric) != nil)) {
+			end -= 1
+		} else {
+			
+			if (startString.lowercased() == endString.lowercased()) {
+				start += 1
+				end -= 1
+			} else {
+				return false
+			}
+		}
+	}
+	
+	return true
+}
+
+print(isPalindrome("A man, a plan, a canal: Panama"))
+print(isPalindrome("race a car"))
+
