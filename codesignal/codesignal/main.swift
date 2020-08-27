@@ -49,3 +49,37 @@ func swapIn2D(matrix: inout [[Int]], ai: Int, aj: Int, bi: Int, bj: Int) {
 let image: [[Int]] = [[1,2,3], [4,5,6], [7,8,9]]
 let r = rotateImage(a: image)
 print(r)
+
+
+class X {
+	var id: Int
+	init(id: Int) {
+		self.id = id
+	}
+}
+
+
+var dataSource: [X] = [X(id: 1), X(id: 2)]
+func foo() {
+	
+	guard !dataSource.isEmpty else { return }
+	let cachedFirstObj = dataSource[0] // retrieve the first object for computation
+	
+	// some business logic -- need to update first object id
+	// dataSource[0].id = 5 // not recommeneded as we already cached it inside cachedFirstObj
+	cachedFirstObj.id = 6
+	
+	for each in dataSource {
+		print(each.id)
+	}
+}
+foo()
+
+var str1 = "abcd"
+str1.removeLast()
+print(str1)
+
+// swap char inside a string
+let array = Array(str1)
+print(array)
+print(String(array))
