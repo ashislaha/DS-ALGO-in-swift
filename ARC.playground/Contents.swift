@@ -357,10 +357,9 @@ class FixedHTMLElement {
 	}
 }
 
-var fixedParagraph: FixedHTMLElement? = FixedHTMLElement(name: "fixed", text: "Hello, world")
+var fixedParagraph: FixedHTMLElement? = FixedHTMLElement(name: "p", text: "Hello, world")
 fixedParagraph!.asHTML()
 
 /** It will deallocated self successfully */
 fixedParagraph = nil
-
 
