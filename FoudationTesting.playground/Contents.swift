@@ -52,6 +52,8 @@ print("filtered result", filteredSet)
 // ----------------------------------------------------------//
 /// Experiment on Dictionary
 // ----------------------------------------------------------//
+
+
 print("--------------Dictionary----------------")
 
 // create a dictionary and insert some element
@@ -108,6 +110,12 @@ let substring = inputString[index1...index2]
 print("substring of inputString --->", substring)
 
 
+// divide string into multiple short string
+
+
+
+// replace a particular char in string with another char/string
+
 
 
 
@@ -160,8 +168,17 @@ intArray.sort()
 print("in place sorting -- after -->", intArray)
 
 
+// printing an array from end
+print("stride the arrary from end to begin ---> stride(from: to: by:)")
+for i in stride(from: intArray.count-1, to: -1, by: -1) {
+	print(intArray[i])
+}
 
-
+// OR we can use stride(from: through: by:) method
+print("stride the arrary from end to begin --> stride(from: through: by:)")
+for i in stride(from: intArray.count-1, through: 0, by: -1) {
+	print(intArray[i])
+}
 
 
 // ----------------------------------------------------------//
@@ -247,9 +264,3 @@ graph.edge(u: 20, v: 35)
 
 graph.dfs(start: 20)
 print(graph.parent)
-
-
-
-
-
-

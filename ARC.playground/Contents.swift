@@ -16,6 +16,10 @@ class Person {
     init (name: String) {
         self.name = name
     }
+	
+	deinit {
+		print("deallocating Person \(name)")
+	}
 }
 
 /*:
@@ -54,6 +58,10 @@ class Tenant {
     var apartment: Apartment?
     
     init(name: String) { self.name = name }
+	
+	deinit {
+		print("deallocating Tenant \(name)")
+	}
 }
 
 class Apartment {
@@ -61,6 +69,10 @@ class Apartment {
     var tenant: Tenant?
     
     init (number: Int) { self.number = number }
+	
+	deinit {
+		print("deallocating Apartment \(number)")
+	}
 }
 /*:
  We can create a tenant and an apartment which are not associated to each other. After these
@@ -116,6 +128,10 @@ class NamedTenant {
     var apartment: FixedApartment?
     
     init(name: String) { self.name = name }
+	
+	deinit {
+		print("deallocating NamedTenant \(name)")
+	}
 }
 
 class FixedApartment {
@@ -123,6 +139,10 @@ class FixedApartment {
     weak var tenant: NamedTenant?
     
     init (number: Int) { self.number = number }
+	
+	deinit {
+		print("deallocating FixedApartment \(number)")
+	}
 }
 /*:
  Here is our new tenant and his new apartment.
@@ -265,6 +285,10 @@ class HTMLElement {
         self.name = name
         self.text = text
     }
+	
+	deinit {
+		print("deallocating HTMLElement \(name)")
+	}
 }
 
 
@@ -311,12 +335,15 @@ class FixedHTMLElement {
     let name: String
     let text: String?
     
-    lazy var asHTML: () -> String = { [unowned self] in
-        if let text = self.text {
-            return "<\(self.name)>\(text)</\(self.name)>"
+    lazy var asHTML: () -> String = { [weak self] in
+		
+		guard let strongSelf = self else { return "" }
+		
+        if let text = strongSelf.text {
+            return "<\(strongSelf.name)>\(text)</\(strongSelf.name)>"
         }
         else {
-            return "<\(self.name) />"
+            return "<\(strongSelf.name) />"
         }
     }
     
@@ -324,11 +351,16 @@ class FixedHTMLElement {
         self.name = name
         self.text = text
     }
+	
+	deinit {
+		print("deallocating FixedHTMLElement \(name)")
+	}
 }
-/*:
- Playgrounds do not allow us to test/prove this, so feel free to plug this into a compiled
- application to see it in action.
- */
 
+var fixedParagraph: FixedHTMLElement? = FixedHTMLElement(name: "fixed", text: "Hello, world")
+fixedParagraph!.asHTML()
+
+/** It will deallocated self successfully */
+fixedParagraph = nil
 
 
