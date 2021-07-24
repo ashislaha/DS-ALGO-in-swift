@@ -32,6 +32,20 @@ print("isSubset of", isSubset)
 // we can check whether two set are disjoint or not.
 // (disjoint means -- 1. do intersection between two set and 2. it should be empty)
 
+let aSet: Set<Character> = ["a", "b", "c"]
+let bSet: Set<Character> = ["a", "c", "b", "d"]
+let resultSet = bSet.subtracting(aSet)
+print(resultSet)
+
+// Two sets are identical, we can apply == as they are conforming to equatable protocol
+if aSet == bSet {
+	print("both are identical set")
+} else {
+	print("both are not identical set")
+}
+
+
+
 // intersection of two set
 let oddSet: Set<Int> = [1, 3, 5]
 let intersectionSet = oddSet.intersection(intSet)
@@ -111,10 +125,36 @@ print("substring of inputString --->", substring)
 
 
 // divide string into multiple short string
+let bigString = "I am ashis. I am living in Hyderabad."
+let components = bigString.components(separatedBy: " ")
+print(components)
 
+let words = ["abcd", "efg", "hijklm", "nopqrst"]
+let resultString = words.joined(separator: ",")
+print(resultString)
+
+
+// divide and join using CharacterSet
+let letterCharacterSet = CharacterSet.letters
+let invertedCharacterSet = letterCharacterSet.inverted
+
+let customCharacterSet = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
+let invertedCustomCharset = customCharacterSet.inverted
+
+
+let randomSentence = "I am working $$ at% microsoft ## . I want to filter @$ this s   tring into a sentence"
+let refinedSentence = randomSentence.components(separatedBy: invertedCharacterSet)
+print(refinedSentence)
+
+let refinedSentence2 = randomSentence.components(separatedBy: invertedCustomCharset)
+print(refinedSentence2.joined(separator: ""))
 
 
 // replace a particular char in string with another char/string
+
+let replaceString = "I am happy $"
+let resultReplaceString = replaceString.replacingOccurrences(of: "$", with: "")
+print(resultReplaceString)
 
 
 
@@ -149,6 +189,12 @@ if index < intArray.count {
 	print("insert 100 at index: \(index) ---> ", intArray)
 }
 
+// copy the entire array at the end of another array
+let tempArray:[Int] = [1,2,3,4]
+var resultArr: [Int] = [10,20,30]
+resultArr.append(contentsOf: tempArray)
+
+
 // construct an array with default false value
 let boolArray = Array<Bool>(repeating: false, count: 10)
 print(boolArray)
@@ -181,86 +227,121 @@ for i in stride(from: intArray.count-1, through: 0, by: -1) {
 }
 
 
-// ----------------------------------------------------------//
-/// DFS
-// ----------------------------------------------------------//
+// can we compare two array
 
-print("--------------DFS----------------")
-class Node {
-	let value: Int
-	var next: Node?
-	
-	init(value: Int) {
-		
-		self.value = value
-		self.next = nil
-	}
-	
-}
+let array1 = [1,2,3,4]
+let array2 = [2,3,4,1]
 
-class Graph {
-	
-	init(values: [Int]) {
-		
-		for each in values {
-			visited[each] = false
-		}
-		totalVertex = values.count
-	}
-	
-	public func edge(u: Int, v: Int) {
-		
-		guard let adjVertex = adj[u] else {
-			
-			let vertex = Node(value: v)
-			adj[u] = vertex
-			return
-			
-		}
-		
-		let vertex = Node(value: v)
-		vertex.next = adjVertex
-		adj[u] = vertex
-	}
-	
-	// private apis
-	var parent: [Int: Int] = [:]
-	var visited: [Int: Bool] = [:]
-	var adj: [Int: Node] = [:]
-	private let totalVertex: Int
-	
-	func dfs(start: Int) {
-		
-		// 1. make it visited
-		visited[start] = true
-		print(start)
-		
-		// 2. loop through the ajd vertices
-		
-		var adjVertex = adj[start]
-		while let nextVertex = adjVertex {
-			let value = nextVertex.value
-			if let visited = visited[value], !visited {
-				parent[value] = start
-				dfs(start: value)
-			}
-			adjVertex = nextVertex.next
-			
-		}
-	}
+if array1 == array2 {
+	print("both array are same")
+} else {
+	print("both array are not same")
 }
 
 
-let graph = Graph(values: [20, 30, 25, 35])
-graph.edge(u: 20, v: 30)
-graph.edge(u: 30, v: 25)
-graph.edge(u: 25, v: 35)
-graph.edge(u: 20, v: 25)
-graph.edge(u: 20, v: 35)
+let set1 = Set(array1)
+let set2 = Set(array2)
 
-// 20 --> 30 --> 25 --> 35
-// 20 --> 25
-// 20 --> 35
+if set1 == set2 {
+	print("both set are same")
+} else {
+	print("both set are not same")
+}
 
-graph.dfs(start: 20)
-print(graph.parent)
+
+// shuffle -- apply rand function
+let shuffleInputArr = [1, 2,3,4,5]
+var systemRandomNumberGenerator = SystemRandomNumberGenerator()
+let shuffledArray = shuffleInputArr.shuffled(using: &systemRandomNumberGenerator)
+
+let randomNumer = Int(arc4random()) % shuffleInputArr.count // between 0 to count-1
+print(randomNumer)
+
+
+
+// ---------------------------------------------------------- //
+/// Experiment on Protocol
+// ----------------------------------------------------------//
+
+
+print("--------------Protocol----------------")
+
+
+protocol Person: AnyObject {
+	var name: String {get set}
+	var country: String { get set}
+}
+
+class BobPerson: Person {
+	var country: String
+	var name: String
+	
+	init(name: String, country: String) {
+		self.name = name
+		self.country = country
+	}
+}
+
+class AadharPerson {
+	weak var person: Person? // protocol should be class type to use weak var, it must conform "AnyObject"
+	
+	init(person: Person) {
+		self.person = person
+	}
+}
+
+let bob = BobPerson(name: "Bob", country: "India")
+let aadhar = AadharPerson(person: bob)
+
+
+
+
+@objc protocol Television: AnyObject {
+	var name: String {get set}
+	
+	@objc optional func isSupport4K() -> Bool
+}
+
+class TelevisionBaseClass: Television {
+	var name: String
+	
+	init(name: String) {
+		self.name = name
+	}
+}
+
+class AppleTV: TelevisionBaseClass {
+	
+	override init(name: String) {
+		super.init(name: name)
+	}
+	
+	func isSupport4K() -> Bool {
+		return true
+	}
+}
+
+class SamsungTV: TelevisionBaseClass {
+	override init(name: String) {
+		super.init(name: name)
+	}
+	
+	func isSupport4K() -> Bool {
+		return false
+	}
+}
+
+let appleTv = AppleTV(name: "Apple")
+let samsungTV = SamsungTV(name: "Samsung")
+
+func testFuntion(television: Television) {
+	print(television.name)
+	print("supporting 4k -->", television.isSupport4K?() ?? false)
+}
+
+testFuntion(television: appleTv)
+testFuntion(television: samsungTV)
+
+
+
+
