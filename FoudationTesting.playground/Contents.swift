@@ -1,5 +1,132 @@
 import UIKit
 
+// dispatch once in swift
+// using lazy closure execution or static let clsoure
+class StaticOnceTest {
+	
+	static let test2 = {
+		print("Test " + $0 + " \($1)")
+	}("mediaHSL", 5)
+	
+	lazy var closure: () = {
+		test(entryPoint: $0, videos: $1)
+	}("see all" , 4)
+	
+	private func test(entryPoint: String, videos: Int) {
+		print("Test " + entryPoint + " \(videos)")
+	}
+}
+
+print("Test-1")
+let a = StaticOnceTest()
+a.closure
+a.closure
+a.closure
+a.closure
+StaticOnceTest.test2
+StaticOnceTest.test2
+StaticOnceTest.test2
+StaticOnceTest.test2
+
+print("Test-2")
+let aa = StaticOnceTest()
+aa.closure
+aa.closure
+aa.closure
+aa.closure
+
+extension Date {
+
+	/// convert date into String
+	/// - Returns: String in MMM, d, yyyy format (e.g. Oct 8, 2013)
+	public func dateToStringInddMMMyyyy() -> String {
+		let dateFormatter = DateFormatter()
+		dateFormatter.dateFormat = "dd MMM yyyy"
+		return dateFormatter.string(from: self)
+	}
+}
+
+let outputDate = Date().dateToStringInddMMMyyyy()
+print(outputDate)
+
+
+
+// ---------------------------------------------------------- //
+/// Experiment on seralisation and de-serialisation
+// ----------------------------------------------------------//
+
+let postBodyDict: [String: Any] = [
+	"subject":"Lets go For Party",
+	"body":[
+		"contentType":"HTML",
+		"content":"Does mid month work for you?"
+	],
+	"start": [
+		"dateTime": "2021-10-15T12:00:00",
+		"timeZone": "Pacific Standard Time"
+	],
+	"end": [
+		"dateTime": "2021-10-15T14:00:00",
+		"timeZone": "Pacific Standard Time"
+	],
+	"location": [
+		"displayName":"Ashis's Event Creation"
+	],
+	"attendees" : [
+		[
+			"emailAddress": [
+				"address":"aslaha@microsoft.com",
+				"name":"Ashis Laha"
+			],
+			
+			"type": "required"
+		],
+		[
+			"emailAddress": [
+				"address":"ropal@microsoft.com",
+				"name":"Roli Pal"
+			],
+			
+			"type": "required"
+		],
+		[
+			"emailAddress": [
+				"address":"npasricha@microsoft.com",
+				"name":"Neelu Pasricha"
+			],
+			
+			"type": "required"
+		]
+	],
+	"isOnlineMeeting": true
+]
+
+// seralise it
+let data = try? JSONSerialization.data(withJSONObject: postBodyDict, options: .prettyPrinted)
+
+
+// de-seralize it
+let jsonObj = try? JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as? [String: Any]
+print(jsonObj!)
+
+
+// ---------------------------------------------------------- //
+/// Experiment -- UserDefault,
+// ----------------------------------------------------------//
+
+
+let printDate = Date()
+print("\(printDate)")
+
+let userDefaults = UserDefaults.standard
+let value = userDefaults.bool(forKey: "test")
+
+if value == false {
+	print("no entry there OR insert false before")
+}
+
+
+
 // ---------------------------------------------------------- //
 /// Experiment on Set
 // ----------------------------------------------------------//
@@ -45,9 +172,12 @@ if aSet == bSet {
 }
 
 
-
 // intersection of two set
-let oddSet: Set<Int> = [1, 3, 5]
+let oddSet: Set<Int> = [1, 3, 5, -1]
+
+let minValue = oddSet.min()
+let maxValue = oddSet.max()
+
 let intersectionSet = oddSet.intersection(intSet)
 print("intersection result", intersectionSet)
 
@@ -60,6 +190,27 @@ print("Union of two set", unionSet)
 // Ask - extract only even numbers in union set
 let filteredSet = unionSet.filter{ $0 % 2 == 0 }
 print("filtered result", filteredSet)
+
+
+
+
+// ---------------------------------------------------------- //
+/// Experiment on OptionSet
+// ----------------------------------------------------------//
+
+struct Direction: OptionSet {
+	
+	let rawValue: Int
+	static let north = Direction(rawValue: 1<<1)
+	static let south = Direction(rawValue: 1<<2)
+	static let west = Direction(rawValue: 1<<3)
+	static let east = Direction(rawValue: 1<<4)
+	
+	static let all: Direction = [.north, .south, .east, .west]
+}
+
+let northOnlyDirection: Direction = .north
+let allDirection: Direction = .all
 
 
 
@@ -76,15 +227,62 @@ var dict: [Int: String] = [:]
 dict[1] = "a"
 dict[2] = "b"
 
+var dict1 = ["a": "1", "b": "2", "c":"3"]
+let dict2 = ["b": "2", "a": "1"]
+let dict3 = ["a": "1", "b": "2"]
 
+if dict1 == dict2 {
+	print("dict1 and dict2 are same dict")
+} else {
+	print("dict1 and dict3 are different dict")
+}
 
+if dict1 == dict3 {
+	print("dict1 and dict3 are same dict")
+} else {
+	print("dict1 and dict3 are different dict")
+}
 
+// remove an entry in dictionary
+dict1.removeValue(forKey: "a")
+print(dict1)
 
-
+// property observer of a dict
+var testDict: [Int: Int] = [:] {
+	didSet {
+		print(testDict)
+	}
+}
+testDict[1] = 10
+testDict[2] = 20
 
 // ----------------------------------------------------------//
 /// Experiment on string
 // ----------------------------------------------------------//
+
+let testLink = "https://www.google.com?a=b"
+let url = URL(string: testLink)!
+let extensionString = url.pathExtension
+
+
+print("--------------DateComponents Formatter----------------")
+
+let input3: TimeInterval = 26
+let input4: TimeInterval = 66
+let input5: TimeInterval = 3766
+
+let formatter3 = DateComponentsFormatter()
+formatter3.unitsStyle = .positional
+formatter3.zeroFormattingBehavior = .pad // if you want "0" padding on first params
+if input5 < 3600 {
+	formatter3.allowedUnits = [.minute, .second]
+} else {
+	formatter3.allowedUnits = [.hour, .minute, .second]
+}
+let outputString3 = formatter3.string(from: input5)!
+print(outputString3)
+
+//formatter.allowedUnits = [.hour, .minute, .second]
 
 print("--------------String----------------")
 
@@ -96,15 +294,27 @@ extension StringProtocol {
 print("Ascii value of ABC -->", "ABC".asciiValues)
 
 
+// String is a value type, you cannot put a weak referece on value type
+// Compilation error - 'weak' is only applied to class and class-bound protocol types
+
+/* weak */ var dummyString: String? = "abc"
+var anotherString = dummyString // creates an another copy
+anotherString = "de" // can assign a new value
+print(dummyString, anotherString) // Optional("abc") Optional("de")
+
+
 // how to get each char in a string?
 
 // Approach - 1 - using compactMap()
 let inputString = "abcdef"
 print("Output in using CompactMap ---->")
-inputString.compactMap { print ($0) }
+var newInputStrings: [Character] = []
+inputString.compactMap { newInputStrings.append($0) }
+print(newInputStrings)
 
 
 // Approcah - 2: Using index
+// It has peformance impact to use index, so try to avoid this method as much as possible.
 print("Output using index ----->")
 for i in 0..<inputString.count {
 	let index = inputString.index(inputString.startIndex, offsetBy: i)
@@ -118,6 +328,7 @@ for eachChar in inputString {
 }
 
 // substring of a string using Index
+// It has peformance impact to use index, so try to avoid this method as much as possible.
 let index1 = inputString.index(inputString.startIndex, offsetBy: 2)
 let index2 = inputString.index(inputString.startIndex, offsetBy: 4)
 let substring = inputString[index1...index2]
@@ -157,6 +368,18 @@ let resultReplaceString = replaceString.replacingOccurrences(of: "$", with: "")
 print(resultReplaceString)
 
 
+// convert a number into a binrary representation
+let bits = String(10, radix: 2)
+print(bits)
+
+// findout abs() between two number diff
+let diff = abs(13.5-15.6)
+print(diff)
+
+
+let name: NSString = "abcd efgh.mp4"
+let fileExtension = name.pathExtension
+print(fileExtension)
 
 
 // ----------------------------------------------------------//
@@ -164,8 +387,14 @@ print(resultReplaceString)
 // ----------------------------------------------------------//
 
 print("--------------Array----------------")
-var intArray: [Int] = [1,2,3,4,5,6]
+var intArray: [Int] = [1,2,3,4,5,6, -2]
 print("size of that array", intArray.count) // size of that array
+
+// array with specific size
+var capacityArr = Array<Int>(repeating: 0, count: 10) // array with 10 size initialised with 0
+
+let minElement = intArray.min() // min() and max() is available for set
+let maxElement = intArray.max()
 
 // push_back into array
 intArray.append(7)
@@ -258,6 +487,22 @@ let randomNumer = Int(arc4random()) % shuffleInputArr.count // between 0 to coun
 print(randomNumer)
 
 
+let testOne = [2,1,2,3,1]
+let testTwo = testOne + [4]
+print(testTwo)
+
+
+let droppedElement = testOne.dropFirst(1)
+print(droppedElement)
+
+
+
+// Range operator in array
+let range = 1...3
+for i in range {
+	print(i)
+}
+
 
 // ---------------------------------------------------------- //
 /// Experiment on Protocol
@@ -343,5 +588,139 @@ testFuntion(television: appleTv)
 testFuntion(television: samsungTV)
 
 
+/// Explore few protocols
+
+/// Equatable
+
+
+/// Comparable
+
+
+/// Hashable
+
+
+
+/// Sequence
+// sequence is a list of values which you can step through at a time. Example -- For in loop increamenting by 1
+// array contains() method goes via linear search and it is coming from sequence protocol.
+
+
+/// Collection
+// a collection is a sequence whose elements can be accessed multiple times and can be accessed by indexed subscript.
+// array is a collection
+// Collection protocol inherits from sequence protocol
+
+// A slice of original collection can share the original space
+let sentence = "The good person"
+if let index = sentence.firstIndex(of: " ") {
+	let firstWord = sentence[sentence.startIndex..<index] // [..<index] is same as it.
+	print(firstWord)
+}
+
+/// slice
+// a slice is a view of subsequence of elements of an another collection. It uses the original collectio space.
+// to create a slice takes o(1) time
+// it contains the start and end indices of the view and base collection
+
+
+
+/// Bidirectional collection
+// a collection that supports both backward and forward movement/traversal
+
+
+
+// ---------------------------------------------------------- //
+/// Experiment on Struct
+// ----------------------------------------------------------//
+
+class Road {
+	let name: String
+	let length: Double
+	
+	init(name: String, length: Double) {
+		self.name = name
+		self.length = length
+	}
+}
+
+struct Address {
+	
+	let road: Road
+	let landMark: String	
+}
+
+
+// ---------------------------------------------------------- //
+// High order functions
+// ----------------------------------------------------------//
+
+let TwoDArray: [[Character]] = [["A", "B", "C"], ["X", "Y", "Z"]]
+let OneDArray = TwoDArray.flatMap { $0 }
+print(OneDArray)
+
+
+// find out whether "M" is present in that 2D array
+let isMPresent = OneDArray.filter { $0 == "M" }
+print("is M present? ", !isMPresent.isEmpty)
+
+
+// concat all the characters into a single string
+let concatResult = OneDArray.reduce("Final result = ") { partialResult, ch in
+	return partialResult + String(ch) // string concat partialResult + ch and save it partialResult for re-use.
+}
+print(concatResult)
+
+
+protocol VideoViewController: AnyObject {
+	
+	func selfReference() -> UIViewController
+	
+	func updateUI()
+	
+}
+
+class SeeAllController: UIViewController {
+	
+	weak var videoViewController: VideoViewController?
+	
+	func addView() {
+		
+		if let childView = videoViewController?.selfReference().view {
+			view.addSubview(childView)
+		}
+	}
+	
+	func registerNotification() {
+		// listen to a notification
+		// data is common for both child controller, inform them once we receive a new data.
+	}
+	
+	func handleNotification() {
+		
+		videoViewController?.updateUI()
+	}
+	
+	
+}
+
+class TableController: UIViewController, VideoViewController {
+	
+	func selfReference() -> UIViewController { return self }
+	
+	func updateUI() {
+		//
+	}
+}
+
+class CollectionController: UIViewController, VideoViewController {
+	
+	func selfReference() -> UIViewController { return self }
+	
+	func updateUI() {
+		
+	}
+}
+
+// common viewModel which will handle all sort of common data handling logic
 
 
